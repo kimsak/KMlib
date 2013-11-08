@@ -134,8 +134,8 @@ void CSprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
 	// texMatrix
     float   sw = (float)texture->GetOriginalW()/texture->GetWidth(),
             sh = (float)texture->GetOriginalH()/texture->GetHeight();
-	CMatrix4 tmMat = CMatrix4::Scale(CVector(sw, sh, 1));
-    tmMat *= CMatrix4::Translation(CVector(srcRect.GetX(), srcRect.GetY(), 0));
+	CMatrix4 tmMat = CMatrix4::Scale(Vector3(sw, sh, 1));
+    tmMat *= CMatrix4::Translation(Vector3(srcRect.GetX(), srcRect.GetY(), 0));
     pShader->SetUniform("texMatrix", tmMat);
 	
 	/**
@@ -196,17 +196,17 @@ void CSprite::DrawRect(CTexture *texture, const CRectangle &srcRect, const CRect
 	// 行列変換
 //	CMatrix4 mvpMat = CMatrix4::Translation(CVector(1, -1, 0));
 	CMatrix4 mvpMat;
-	mvpMat *= CMatrix4::Scale(CVector(destRect.GetWidth()/2.0f, destRect.GetHeight()/2.0f, 1));
+	mvpMat *= CMatrix4::Scale(Vector3(destRect.GetWidth()/2.0f, destRect.GetHeight()/2.0f, 1));
 //	mvpMat *= CMatrix4::Rotation(CQuaternion(rad/(2*GL_PI), CVector(0, 0, 1)));
-	mvpMat *= CMatrix4::Translation(CVector(-displayWidth/2.0f+destRect.GetX(), displayHeight/2.0f-destRect.GetY(), 0));
-	mvpMat *= CMatrix4::LookAt(CVector(0, 0, 10), CVector(), CVector(0, 1, 0));
+	mvpMat *= CMatrix4::Translation(Vector3(-displayWidth/2.0f+destRect.GetX(), displayHeight/2.0f-destRect.GetY(), 0));
+	mvpMat *= CMatrix4::LookAt(Vector3(0, 0, 10), Vector3(), Vector3(0, 1, 0));
 	mvpMat *= CMatrix4::Orthof(-displayWidth/2.0f, displayWidth/2.0f, displayHeight/2.0f, -displayHeight/2.0f, 1, 100);
 	
     pShader->SetUniform("modelViewProjectionMatrix", mvpMat);
 	
 	// texMatrix
-	CMatrix4 tmMat = CMatrix4::Scale(CVector(srcRect.GetWidth()/texture->GetWidth(), srcRect.GetHeight()/texture->GetHeight(), 1));
-	tmMat *= CMatrix4::Translation(CVector(srcRect.GetX()/texture->GetWidth(), srcRect.GetHeight()/texture->GetHeight(), 0));
+	CMatrix4 tmMat = CMatrix4::Scale(Vector3(srcRect.GetWidth()/texture->GetWidth(), srcRect.GetHeight()/texture->GetHeight(), 1));
+	tmMat *= CMatrix4::Translation(Vector3(srcRect.GetX()/texture->GetWidth(), srcRect.GetHeight()/texture->GetHeight(), 0));
     pShader->SetUniform("texMatrix", tmMat);
 	
 	/**

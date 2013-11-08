@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D3A12815-97E3-49B9-97B4-F117BBB113C4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KMlib</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E0F398BF-60D9-4C2F-8656-03783A6527FF</key>
+		<string>ssh://github.com/kimsak/KMlib.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Xcode/KMlib.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E0F398BF-60D9-4C2F-8656-03783A6527FF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/kimsak/KMlib.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E0F398BF-60D9-4C2F-8656-03783A6527FF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E0F398BF-60D9-4C2F-8656-03783A6527FF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KMlib</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -41,7 +41,8 @@ public:
     void SetUniform(const std::string &name, float data);
     void SetUniform(const std::string &name, const int *data_array, int count);
     void SetUniform(const std::string &name, const float *data_array, int count);
-    void SetUniform(const std::string &name, const CVector &data);
+    void SetUniform(const std::string &name, const Vector2 &data);
+    void SetUniform(const std::string &name, const Vector3 &data);
     void SetUniform(const std::string &name, const CMatrix4 &data);
     void SetUniform(const std::string &name, const Color &color);
     

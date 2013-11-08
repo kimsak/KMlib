@@ -8,7 +8,7 @@
 #include "Game3DObject.h"
 #include "Camera.h"
 
-void Camera::SetLookAt(const CVector &eyePos, const CVector &targetPos, const CVector &upperDir) {
+void Camera::SetLookAt(const Vector3 &eyePos, const Vector3 &targetPos, const Vector3 &upperDir) {
     _viewMatrix = CMatrix4::LookAt(eyePos, targetPos, upperDir);
 }
 

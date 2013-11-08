@@ -75,9 +75,9 @@ void Game2DObject::Draw() {
     // modelViewProjectionMatrix
 	// 行列変換
     // wldMat
-    CMatrix4 wldMat = CMatrix4::Scale(CVector(sclX, sclY, 1));
+    CMatrix4 wldMat = CMatrix4::Scale(Vector3(sclX, sclY, 1));
     wldMat *= CMatrix4::Rotation(CQuaternion(rotation, AXIS_Z));
-    wldMat *= CMatrix4::Translation(CVector(x, y, z));
+    wldMat *= CMatrix4::Translation(Vector3(x, y, z));
     pShader->SetUniform("wldMat", wldMat);
     
 	// texMatrix

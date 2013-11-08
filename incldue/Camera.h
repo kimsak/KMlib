@@ -57,7 +57,7 @@ public:
     const CMatrix4 &GetViewMatrix() const { return _viewMatrix; }
     const CMatrix4 &GetProjMatrix() const { return _projMatrix; }
     
-    void SetLookAt(const CVector &eyePos, const CVector &targetPos, const CVector &upperDir);
+    void SetLookAt(const Vector3 &eyePos, const Vector3 &targetPos, const Vector3 &upperDir);
     
     void SetPerspective(float _fovy, float aspect, float nClip, float fClip);
     void SetPerspective(float aspect, float nClip, float fClip);

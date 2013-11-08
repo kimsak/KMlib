@@ -17,8 +17,8 @@
 
 class Game3DObject : public GameObject {
 public:
-    CVector         position;
-    CVector         scale;
+    Vector3         position;
+    Vector3         scale;
     CQuaternion     rotation;
     
     Color           color;

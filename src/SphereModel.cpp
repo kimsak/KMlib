@@ -54,7 +54,7 @@ void SphereModel::Render(const Game3DObject *pObj) {
             float theta2 = (j + 1) * 2 * PI_VALUE / segments - (PI_VALUE / 2.0f);
             
             for (int i = 0; i <= segments; i++) {
-                CVector e, p;
+                Vector3 e, p;
                 float theta3 = i * 2 * PI_VALUE / segments;
                 
                 e.X = cosf( theta1 ) * cosf( theta3 );

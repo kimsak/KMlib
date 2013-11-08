@@ -156,7 +156,12 @@ void Shader::SetUniform(const std::string &name, const float *data_array, int co
     glUniform1fv(loc, count, data_array);
 }
 
-void Shader::SetUniform(const std::string &name, const CVector &data) {
+void Shader::SetUniform(const std::string &name, const Vector2 &data) {
+    GLint loc = glGetUniformLocation(programID, name.c_str());
+    glUniform2f(loc, data.X, data.Y);
+}
+
+void Shader::SetUniform(const std::string &name, const Vector3 &data) {
     GLint loc = glGetUniformLocation(programID, name.c_str());
     glUniform3f(loc, data.X, data.Y, data.Z);
 }

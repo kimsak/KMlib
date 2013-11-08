@@ -19,92 +19,208 @@ inline float Lerp(float x1, float x2, float t) {
     return (1-t)*x1 + t*x2;
 }
 
-// 3次元ベクトルクラス
-class CVector {
+// 2次元ベクトルクラス
+class Vector2 {
 public:
-    float X, Y, Z;
+    float X, Y;
+    
     
     // コンストラクタ
-    CVector() : X(0.0f), Y(0.0f), Z(0.0f) {}
-    CVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+    Vector2() : X(0.0f), Y(0.0f) {}
+    Vector2(float x, float y) : X(x), Y(y) {}
     
-    /// 代入（3次元ベクトル）
-    CVector& operator=(const CVector& v) {
-        X=v.X, Y=v.Y, Z=v.Z;
+    /// 代入（2次元ベクトル）
+    Vector2& operator=(const Vector2& v) {
+        X=v.X, Y=v.Y;
         return *this;
     }
     /// 代入（float）
-    CVector& operator=(float f) {
-        return *this = (float)f;
+    Vector2& operator=(float f) {
+        X = Y = f;
+        return *this;
     }
     /// 代入（int）
-    CVector& operator=(int n) {
+    Vector2 & operator=(int n) {
         return *this = (float)n;
     }
     
-//    /// 比較。ベクトルが等しいときにtrue
-//    bool operator==(const CVector& v) {
-//        return X==v.X && Y==v.Y && Z==v.Z;
-//    }
-//    
-//    /// 比較。ベクトルが等しくないときにtrue
-//    bool operator!=(const CVector& v) {
-//        return X!=v.X || Y!=v.Y || Z!=v.Z;
-//    }
-    
     // 加算処理（2項）
-    CVector operator +(const CVector& v) const {
-        return CVector(X+v.X, Y+v.Y, Z+v.Z);
+    Vector2 operator +(const Vector2& v) const {
+        return Vector2(X+v.X, Y+v.Y);
     }
     
     // 減算処理（2項）
-    CVector operator -(const CVector& v) const {
-        return CVector(X-v.X, Y-v.Y, Z-v.Z);
+    Vector2 operator -(const Vector2& v) const {
+        return Vector2(X-v.X, Y-v.Y);
     }
     
     // 倍数処理
-    CVector operator *(float d) const {
-        return CVector(d*X, d*Y, d*Z);
+    Vector2 operator *(float d) const {
+        return Vector2(d*X, d*Y);
     }
-    friend CVector operator *(float d, const CVector& v) {
-        return CVector(d*v.X, d*v.Y, d*v.Z);
+    friend Vector2 operator *(float d, const Vector2 &v) {
+        return Vector2(d*v.X, d*v.Y);
     }
     
     // 除算処理
-    CVector operator /(float d) const {
+    Vector2 operator /(float d) const {
         if(d==0.0) {
             return *this;
         }
         else {
-            return CVector(this->X/d, this->Y/d, this->Z/d);
+            return Vector2(this->X/d, this->Y/d);
         }
     }
     
     // 単項マイナス
-    CVector operator -() const {
+    Vector2 operator -() const {
+        return (-1.0f)*(*this);
+    }
+    
+    // 代入加算
+    Vector2 & operator +=(const Vector2& v) {
+        this->X += v.X; this->Y += v.Y;
+        return *this;
+    }
+    
+    // 代入減算
+    Vector2& operator -=(const Vector2& v) {
+        this->X -= v.X; this->Y -= v.Y;
+        return *this;
+    }
+    
+    // 代入乗算
+    Vector2& operator *=(float d) {
+        this->X *= d; this->Y *= d;
+        return *this;
+    }
+    
+    // 代入除算
+    Vector2& operator /=(float d) {
+        if(d==0.0) return *this;
+        else {
+            this->X /= d; this->Y /= d;
+            return *this;
+        }
+    }
+    
+    // ベクトルの大きさを求める（2乗）
+    float Length2() const {
+        return X*X + Y*Y;
+    }
+    
+    // ベクトルの大きさを求める
+    float Length() const {
+        return sqrtf(Length2());
+    }
+    
+    // 正規化処理
+    Vector2& Normalize() {
+        return (*this /= Length());
+    }
+    friend Vector2 Normalize(const Vector2& v) {
+        return v / v.Length();
+    }
+    
+    // 内積
+    float Dot(const Vector2 &v) const {
+        return X*v.X+Y*v.Y;
+    }
+    friend float Dot(const Vector2 &a, const Vector2 &b) {
+        return a.Dot(b);
+    }
+    
+    // 外積
+    float Cross(const Vector2& v) const {
+        return X*v.Y - Y*v.X;
+    }
+    friend float Cross(const Vector2 &a, const Vector2 &b) {
+        return a.Cross(b);
+    }
+    
+    // 線形補間関数
+    Vector2 Lerp(const Vector2 &target, float d) {
+        return (1-d)*(*this) + d*target;
+    }
+};
+
+// 3次元ベクトルクラス
+class Vector3 {
+public:
+    float X, Y, Z;
+    
+    // コンストラクタ
+    Vector3() : X(0.0f), Y(0.0f), Z(0.0f) {}
+    Vector3(float x, float y, float z) : X(x), Y(y), Z(z) {}
+    
+    /// 代入（3次元ベクトル）
+    Vector3& operator=(const Vector3& v) {
+        X=v.X, Y=v.Y, Z=v.Z;
+        return *this;
+    }
+    /// 代入（float）
+    Vector3& operator=(float f) {
+        X = Y = Z = f;
+        return *this;
+    }
+    /// 代入（int）
+    Vector3 & operator=(int n) {
+        return *this = (float)n;
+    }
+    
+    // 加算処理（2項）
+    Vector3 operator +(const Vector3& v) const {
+        return Vector3(X+v.X, Y+v.Y, Z+v.Z);
+    }
+    
+    // 減算処理（2項）
+    Vector3 operator -(const Vector3& v) const {
+        return Vector3(X-v.X, Y-v.Y, Z-v.Z);
+    }
+    
+    // 倍数処理
+    Vector3 operator *(float d) const {
+        return Vector3(d*X, d*Y, d*Z);
+    }
+    friend Vector3 operator *(float d, const Vector3 &v) {
+        return Vector3(d*v.X, d*v.Y, d*v.Z);
+    }
+    
+    // 除算処理
+    Vector3 operator /(float d) const {
+        if(d==0.0) {
+            return *this;
+        }
+        else {
+            return Vector3(this->X/d, this->Y/d, this->Z/d);
+        }
+    }
+    
+    // 単項マイナス
+    Vector3 operator -() const {
         return (-1)*(*this);
     }
     
     // 代入加算
-    CVector& operator +=(const CVector& v) {
+    Vector3 & operator +=(const Vector3& v) {
         this->X += v.X; this->Y += v.Y; this->Z += v.Z;
         return *this;
     }
     
     // 代入減算
-    CVector& operator -=(const CVector& v) {
+    Vector3& operator -=(const Vector3& v) {
         this->X -= v.X; this->Y -= v.Y; this->Z -= v.Z;
         return *this;
     }
     
     // 代入乗算
-    CVector& operator *=(float d) {
+    Vector3& operator *=(float d) {
         this->X *= d; this->Y *= d; this->Z *= d;
         return *this;
     }
     
     // 代入除算
-    CVector& operator /=(float d) {
+    Vector3& operator /=(float d) {
         if(d==0.0) return *this;
         else {
             this->X /= d; this->Y /= d; this->Z /= d;
@@ -123,31 +239,31 @@ public:
     }
     
     // 正規化処理
-    CVector& Normalize() {
+    Vector3& Normalize() {
         return (*this /= Length());
     }
-    friend CVector Normalize(const CVector& v) {
+    friend Vector3 Normalize(const Vector3& v) {
         return v / v.Length();
     }
     
     // 内積
-    float Dot(const CVector& v) const {
+    float Dot(const Vector3 &v) const {
         return X*v.X+Y*v.Y+Z*v.Z;
     }
-    friend float Dot(const CVector& a, const CVector& b) {
+    friend float Dot(const Vector3 &a, const Vector3 &b) {
         return a.Dot(b);
     }
     
     // 外積
-    CVector Cross(const CVector& v) const {
-        return CVector(Y*v.Z-Z*v.Y, Z*v.X-X*v.Z, X*v.Y-Y*v.X);
+    Vector3 Cross(const Vector3& v) const {
+        return Vector3(Y*v.Z-Z*v.Y, Z*v.X-X*v.Z, X*v.Y-Y*v.X);
     }
-    friend CVector Cross(const CVector& a, const CVector& b) {
+    friend Vector3 Cross(const Vector3 &a, const Vector3 &b) {
         return a.Cross(b);
     }
     
     // 線形補間関数
-    CVector Lerp(const CVector& target, float d) {
+    Vector3 Lerp(const Vector3 &target, float d) {
         return (1-d)*(*this) + d*target;
     }
     
@@ -165,11 +281,11 @@ public:
 };
 
 // ベクトルクラスに関するマクロ定義
-#define AXIS_X		CVector(1,0,0)
-#define AXIS_Y		CVector(0,1,0)
-#define AXIS_Z		CVector(0,0,1)
-#define VEC_ZERO	CVector()
-#define VEC_ONE		CVector(1,1,1)
+#define AXIS_X		Vector3(1,0,0)
+#define AXIS_Y		Vector3(0,1,0)
+#define AXIS_Z		Vector3(0,0,1)
+#define VEC_ZERO	Vector3()
+#define VEC_ONE		Vector3(1,1,1)
 
 // クォータニオンクラス
 class CQuaternion {
@@ -182,8 +298,8 @@ public:
     
     ///	コンストラクタ
     //	angleの範囲は0=0rad,1=2π_rad
-    CQuaternion(float angle, const CVector& axis) {
-        CVector nAxis = Normalize(axis);
+    CQuaternion(float angle, const Vector3& axis) {
+        Vector3 nAxis = Normalize(axis);
         float sin_ang = sinf(angle/2.0f);
         X = sin_ang*nAxis.X, Y = sin_ang*nAxis.Y, Z = sin_ang*nAxis.Z;
         W = cosf(angle/2.0f);
@@ -216,13 +332,13 @@ public:
     }
     
     // クォータニオンを使ったベクトルの回転
-    CVector Rotate(const CVector& v) const {
+    Vector3 Rotate(const Vector3& v) const {
         CQuaternion p(v.X, v.Y, v.Z, 0);
         p = ~(*this)*p;
         p *= (*this);
-        return CVector(p.X, p.Y, p.Z);
+        return Vector3(p.X, p.Y, p.Z);
     }
-    friend CVector operator *(const CVector& v, const CQuaternion& q) {
+    friend Vector3 operator *(const Vector3 &v, const CQuaternion &q) {
         return q.Rotate(v);
     }
 };
@@ -285,14 +401,14 @@ public:
         CMatrix4 r;
         for(int i=0; i<MATRIX4x4_LENGTH; i++)
             r.Set(i, arr[i]+m.Get(i));
-            return r;
+        return r;
     }
     
     CMatrix4 operator -(const CMatrix4& m) const {
         CMatrix4 r;
         for(int i=0; i<MATRIX4x4_LENGTH; i++)
             r.Set(i, arr[i]-m.Get(i));
-            return r;
+        return r;
     }
     
     CMatrix4 operator *(float num) const {
@@ -314,14 +430,14 @@ public:
                 r.Set(j+i*4, 0);
                 for(int k=0; k<4; k++)
                     r[j+i*4] += arr[4*i+k]*m.Get(j+4*k);
-                    }
+            }
         }
         return r;
     }
     
     CMatrix4& operator =(const CMatrix4& m) {
         for(int i=0; i<MATRIX4x4_LENGTH; i++) arr[i] = m.Get(i);
-            return (*this);
+        return (*this);
     }
     
     CMatrix4& operator =(float value) {
@@ -395,16 +511,16 @@ public:
         return Frustum(-right, right, top, -top, near, far);
     }
     
-    static CMatrix4 LookAt(const CVector& eye, const CVector& target, const CVector& up) {
+    static CMatrix4 LookAt(const Vector3& eye, const Vector3& target, const Vector3& up) {
         CMatrix4 r;
         
-        CVector vz = eye - target;
+        Vector3 vz = eye - target;
         vz.Normalize();
         
-        CVector vx = up.Cross(vz);
+        Vector3 vx = up.Cross(vz);
         vx.Normalize();
         
-        CVector vy = vz.Cross(vx);
+        Vector3 vy = vz.Cross(vx);
         vy.Normalize();
         
         r.Set(0, vx.X); r.Set(1, vy.X); r.Set(2, vz.X);
@@ -419,7 +535,7 @@ public:
         return r;
     }
     
-    static CMatrix4 Scale(const CVector& scale) {
+    static CMatrix4 Scale(const Vector3& scale) {
         return CMatrix4(
                         scale.X, 0, 0, 0,
                         0, scale.Y, 0, 0,
@@ -455,7 +571,7 @@ public:
         return r;
     }
     
-    static CMatrix4 Translation(const CVector& v) {
+    static CMatrix4 Translation(const Vector3& v) {
         CMatrix4 r;
         r.Set(12, v.X); r.Set(13, v.Y); r.Set(14, v.Z);
         return r;
