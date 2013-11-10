@@ -7,11 +7,46 @@
 		<key>KMlib.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+		<key>KMlib_ios.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>9434CBAC182E869300D07014</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9434CBDE182E90EA00D07014</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9434CBED182E90EA00D07014</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9434CC18182E9BF900D07014</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9434CC49182EAE1400D07014</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9434CC56182EAE1400D07014</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9489FB711826B4C8009BBB63</key>
 		<dict>
 			<key>primary</key>

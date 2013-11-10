@@ -13,10 +13,17 @@
 #include <GLES/glext.h>
 
 #elif defined(__APPLE__)
+#if defined (IOS_BUILD)
+#include <OpenGLES/ES2/gl.h>
+#include <OpenGLES/ES2/glext.h>
+
+#else
 #include <OpenGL/gl.h>
 #include <OpenGL/glext.h>
 
-#endif
+#endif  // IOS_BUILD
+
+#endif  // __APPLE__
 
 #ifndef NULL
 #define NULL	(0)

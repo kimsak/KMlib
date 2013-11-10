@@ -21,6 +21,43 @@
 		943307CB182748520054C8AF /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BF182748520054C8AF /* TextureManager.cpp */; };
 		943307CE182748750054C8AF /* PixelData_objc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 943307CC182748750054C8AF /* PixelData_objc.mm */; };
 		943307CF182748750054C8AF /* TextSrcData_objc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 943307CD182748750054C8AF /* TextSrcData_objc.mm */; };
+		9434CC1E182E9C8000D07014 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434CC1D182E9C8000D07014 /* UIKit.framework */; };
+		9434CC1F182E9CA800D07014 /* SphereModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BC182748520054C8AF /* SphereModel.cpp */; };
+		9434CC20182E9CA800D07014 /* CubeModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307B4182748520054C8AF /* CubeModel.cpp */; };
+		9434CC21182E9CA800D07014 /* PixelData_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9434CBC9182E8B5200D07014 /* PixelData_ios.mm */; };
+		9434CC22182E9CA800D07014 /* TextSrcData_objc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 943307CD182748750054C8AF /* TextSrcData_objc.mm */; };
+		9434CC23182E9CA800D07014 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307B3182748520054C8AF /* Camera.cpp */; };
+		9434CC24182E9CA800D07014 /* FBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307B5182748520054C8AF /* FBO.cpp */; };
+		9434CC25182E9CA800D07014 /* Game2DObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307B6182748520054C8AF /* Game2DObject.cpp */; };
+		9434CC26182E9CA800D07014 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307B7182748520054C8AF /* GameObject.cpp */; };
+		9434CC27182E9CA800D07014 /* PixelData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307B9182748520054C8AF /* PixelData.cpp */; };
+		9434CC28182E9CA800D07014 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BA182748520054C8AF /* Shader.cpp */; };
+		9434CC29182E9CA800D07014 /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BB182748520054C8AF /* ShaderManager.cpp */; };
+		9434CC2A182E9CA800D07014 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BD182748520054C8AF /* Sprite.cpp */; };
+		9434CC2B182E9CA800D07014 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BE182748520054C8AF /* Texture.cpp */; };
+		9434CC2C182E9CA800D07014 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BF182748520054C8AF /* TextureManager.cpp */; };
+		9434CC2D182E9CB600D07014 /* CubeModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FBBA1826B767009BBB63 /* CubeModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC2E182E9CB600D07014 /* SphereModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB851826B6A3009BBB63 /* SphereModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC2F182E9CB600D07014 /* _useGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FBB41826B767009BBB63 /* _useGL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC30182E9CB600D07014 /* AbstractModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FBB51826B767009BBB63 /* AbstractModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC31182E9CB600D07014 /* AbstractObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FBB61826B767009BBB63 /* AbstractObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC32182E9CB600D07014 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FBB71826B767009BBB63 /* Camera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC33182E9CB600D07014 /* Color.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FBB81826B767009BBB63 /* Color.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC34182E9CB600D07014 /* Component.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FBB91826B767009BBB63 /* Component.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC35182E9CB600D07014 /* FBO.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7B1826B6A3009BBB63 /* FBO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC36182E9CB600D07014 /* Game2DObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7C1826B6A3009BBB63 /* Game2DObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC37182E9CB600D07014 /* Game3DObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7D1826B6A3009BBB63 /* Game3DObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC38182E9CB600D07014 /* GameCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7E1826B6A3009BBB63 /* GameCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC39182E9CB600D07014 /* GameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7F1826B6A3009BBB63 /* GameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC3A182E9CB600D07014 /* KMMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB801826B6A3009BBB63 /* KMMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC3B182E9CB600D07014 /* PixelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB811826B6A3009BBB63 /* PixelData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC3C182E9CB600D07014 /* Scene.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB821826B6A3009BBB63 /* Scene.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC3D182E9CB600D07014 /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB831826B6A3009BBB63 /* Shader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC3E182E9CB600D07014 /* ShaderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB841826B6A3009BBB63 /* ShaderManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC3F182E9CB600D07014 /* Sprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB861826B6A3009BBB63 /* Sprite.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC40182E9CB600D07014 /* TextSrcData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB871826B6A3009BBB63 /* TextSrcData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC41182E9CB600D07014 /* Texture.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB881826B6A3009BBB63 /* Texture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434CC42182E9CB600D07014 /* TextureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB891826B6A3009BBB63 /* TextureManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9489FB8A1826B6A3009BBB63 /* FBO.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7B1826B6A3009BBB63 /* FBO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9489FB8B1826B6A3009BBB63 /* Game2DObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7C1826B6A3009BBB63 /* Game2DObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9489FB8C1826B6A3009BBB63 /* Game3DObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9489FB7D1826B6A3009BBB63 /* Game3DObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +83,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9431C09D182F568E00A4E88B /* libKMlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libKMlib.a; path = /Users/kimurayuusaku/Documents/XProjects/General/GameProjects/KMlib/Xcode/build/Debug/libKMlib.a; sourceTree = "<absolute>"; };
+		9431C09E182F568E00A4E88B /* libKMlib_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libKMlib_ios.a; path = "/Users/kimurayuusaku/Documents/XProjects/General/GameProjects/KMlib/Xcode/build/Debug-iphoneos/libKMlib_ios.a"; sourceTree = "<absolute>"; };
 		9433076318273CE10054C8AF /* Basic.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Basic.fsh; sourceTree = "<group>"; };
 		9433076418273CE10054C8AF /* Basic.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Basic.vsh; sourceTree = "<group>"; };
 		9433076518273CE10054C8AF /* Basic3D.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Basic3D.fsh; sourceTree = "<group>"; };
@@ -68,7 +107,11 @@
 		943307BF182748520054C8AF /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
 		943307CC182748750054C8AF /* PixelData_objc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PixelData_objc.mm; sourceTree = "<group>"; };
 		943307CD182748750054C8AF /* TextSrcData_objc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextSrcData_objc.mm; sourceTree = "<group>"; };
-		9489FB721826B4C8009BBB63 /* libKMlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKMlib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9434CBC9182E8B5200D07014 /* PixelData_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PixelData_ios.mm; sourceTree = "<group>"; };
+		9434CBE1182E90EA00D07014 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9434CC1D182E9C8000D07014 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		9434CC72182EB4F700D07014 /* libKMlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKMlib.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/Main-bjagakysxaztbjcwdzgqosslukkn/Build/Products/Release/libKMlib.a"; sourceTree = "<group>"; };
+		9434CC73182EB51000D07014 /* libKMlib_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKMlib_ios.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/Main-bjagakysxaztbjcwdzgqosslukkn/Build/Products/Release-iphoneos/libKMlib_ios.a"; sourceTree = "<group>"; };
 		9489FB7B1826B6A3009BBB63 /* FBO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBO.h; sourceTree = "<group>"; };
 		9489FB7C1826B6A3009BBB63 /* Game2DObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game2DObject.h; sourceTree = "<group>"; };
 		9489FB7D1826B6A3009BBB63 /* Game3DObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game3DObject.h; sourceTree = "<group>"; };
@@ -94,6 +137,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9434CC16182E9BF900D07014 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9434CC1E182E9C8000D07014 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9489FB6F1826B4C8009BBB63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -123,10 +174,29 @@
 		943307B8182748520054C8AF /* objC */ = {
 			isa = PBXGroup;
 			children = (
+				9434CBC9182E8B5200D07014 /* PixelData_ios.mm */,
 				943307CC182748750054C8AF /* PixelData_objc.mm */,
 				943307CD182748750054C8AF /* TextSrcData_objc.mm */,
 			);
 			path = objC;
+			sourceTree = "<group>";
+		};
+		9434CBE0182E90EA00D07014 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9434CC1D182E9C8000D07014 /* UIKit.framework */,
+				9434CBE1182E90EA00D07014 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9434CC6E182EB35E00D07014 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				9434CC72182EB4F700D07014 /* libKMlib.a */,
+				9434CC73182EB51000D07014 /* libKMlib_ios.a */,
+			);
+			name = bin;
 			sourceTree = "<group>";
 		};
 		9443A12D18278196000B6FAE /* models */ = {
@@ -150,21 +220,13 @@
 		9489FB691826B4C8009BBB63 = {
 			isa = PBXGroup;
 			children = (
-				9489FB731826B4C8009BBB63 /* Products */,
+				9434CC6E182EB35E00D07014 /* bin */,
+				9434CBE0182E90EA00D07014 /* Frameworks */,
 				9433076218273BC80054C8AF /* shaders */,
 				9489FB7A1826B5EC009BBB63 /* include */,
 				9489FB791826B5E6009BBB63 /* src */,
 			);
 			sourceTree = "<group>";
-		};
-		9489FB731826B4C8009BBB63 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9489FB721826B4C8009BBB63 /* libKMlib.a */,
-			);
-			name = Products;
-			path = "/Users/kimurayuusaku/Library/Developer/Xcode/DerivedData/Main-aslaoildxbgmpdecaxatovxvejhb/Build/Products/Debug/../../../../../../../../Documents/XProjects/General/GameProjects/KMlib/Xcode";
-			sourceTree = "<absolute>";
 		};
 		9489FB791826B5E6009BBB63 /* src */ = {
 			isa = PBXGroup;
@@ -218,6 +280,35 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		9434CC17182E9BF900D07014 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9434CC2D182E9CB600D07014 /* CubeModel.h in Headers */,
+				9434CC2E182E9CB600D07014 /* SphereModel.h in Headers */,
+				9434CC2F182E9CB600D07014 /* _useGL.h in Headers */,
+				9434CC30182E9CB600D07014 /* AbstractModel.h in Headers */,
+				9434CC31182E9CB600D07014 /* AbstractObject.h in Headers */,
+				9434CC32182E9CB600D07014 /* Camera.h in Headers */,
+				9434CC33182E9CB600D07014 /* Color.h in Headers */,
+				9434CC34182E9CB600D07014 /* Component.h in Headers */,
+				9434CC35182E9CB600D07014 /* FBO.h in Headers */,
+				9434CC36182E9CB600D07014 /* Game2DObject.h in Headers */,
+				9434CC37182E9CB600D07014 /* Game3DObject.h in Headers */,
+				9434CC38182E9CB600D07014 /* GameCore.h in Headers */,
+				9434CC39182E9CB600D07014 /* GameObject.h in Headers */,
+				9434CC3A182E9CB600D07014 /* KMMath.h in Headers */,
+				9434CC3B182E9CB600D07014 /* PixelData.h in Headers */,
+				9434CC3C182E9CB600D07014 /* Scene.h in Headers */,
+				9434CC3D182E9CB600D07014 /* Shader.h in Headers */,
+				9434CC3E182E9CB600D07014 /* ShaderManager.h in Headers */,
+				9434CC3F182E9CB600D07014 /* Sprite.h in Headers */,
+				9434CC40182E9CB600D07014 /* TextSrcData.h in Headers */,
+				9434CC41182E9CB600D07014 /* Texture.h in Headers */,
+				9434CC42182E9CB600D07014 /* TextureManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9489FB701826B4C8009BBB63 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +341,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9434CC18182E9BF900D07014 /* KMlib_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9434CC1A182E9BFA00D07014 /* Build configuration list for PBXNativeTarget "KMlib_ios" */;
+			buildPhases = (
+				9434CC15182E9BF900D07014 /* Sources */,
+				9434CC16182E9BF900D07014 /* Frameworks */,
+				9434CC17182E9BF900D07014 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KMlib_ios;
+			productName = KMlib_ios;
+			productReference = 9431C09E182F568E00A4E88B /* libKMlib_ios.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		9489FB711826B4C8009BBB63 /* KMlib */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9489FB761826B4C8009BBB63 /* Build configuration list for PBXNativeTarget "KMlib" */;
@@ -264,7 +372,7 @@
 			);
 			name = KMlib;
 			productName = KMlib;
-			productReference = 9489FB721826B4C8009BBB63 /* libKMlib.a */;
+			productReference = 9431C09D182F568E00A4E88B /* libKMlib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -284,16 +392,38 @@
 				en,
 			);
 			mainGroup = 9489FB691826B4C8009BBB63;
-			productRefGroup = 9489FB731826B4C8009BBB63 /* Products */;
+			productRefGroup = 9489FB691826B4C8009BBB63;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				9489FB711826B4C8009BBB63 /* KMlib */,
+				9434CC18182E9BF900D07014 /* KMlib_ios */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9434CC15182E9BF900D07014 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9434CC1F182E9CA800D07014 /* SphereModel.cpp in Sources */,
+				9434CC20182E9CA800D07014 /* CubeModel.cpp in Sources */,
+				9434CC21182E9CA800D07014 /* PixelData_ios.mm in Sources */,
+				9434CC22182E9CA800D07014 /* TextSrcData_objc.mm in Sources */,
+				9434CC23182E9CA800D07014 /* Camera.cpp in Sources */,
+				9434CC24182E9CA800D07014 /* FBO.cpp in Sources */,
+				9434CC25182E9CA800D07014 /* Game2DObject.cpp in Sources */,
+				9434CC26182E9CA800D07014 /* GameObject.cpp in Sources */,
+				9434CC27182E9CA800D07014 /* PixelData.cpp in Sources */,
+				9434CC28182E9CA800D07014 /* Shader.cpp in Sources */,
+				9434CC29182E9CA800D07014 /* ShaderManager.cpp in Sources */,
+				9434CC2A182E9CA800D07014 /* Sprite.cpp in Sources */,
+				9434CC2B182E9CA800D07014 /* Texture.cpp in Sources */,
+				9434CC2C182E9CA800D07014 /* TextureManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9489FB6E1826B4C8009BBB63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +448,40 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		9434CC1B182E9BFA00D07014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					IOS_BUILD,
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRIVATE_HEADERS_FOLDER_PATH = include;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9434CC1C182E9BFA00D07014 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = IOS_BUILD;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRIVATE_HEADERS_FOLDER_PATH = include;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		9489FB741826B4C8009BBB63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -411,6 +575,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9434CC1A182E9BFA00D07014 /* Build configuration list for PBXNativeTarget "KMlib_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9434CC1B182E9BFA00D07014 /* Debug */,
+				9434CC1C182E9BFA00D07014 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9489FB6D1826B4C8009BBB63 /* Build configuration list for PBXProject "KMlib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

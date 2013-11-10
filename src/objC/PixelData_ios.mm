@@ -1,8 +1,8 @@
 //
-//  PixelData_objc.mm
-//  KandataGame
+//  PixelData_ios.mm
+//  KMlib
 //
-//  Created by 木村 裕作 on 2013/06/24.
+//  Created by 木村 裕作 on 2013/11/10.
 //  Copyright (c) 2013年 木村 裕作. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
  *  ImageDataクラスの定義
  */
 #ifdef __APPLE__
-#import <Cocoa/Cocoa.h>
+#import <UIKit/UIKit.h>
 
 struct ImageData {
     int width, height;
@@ -28,8 +28,7 @@ struct ImageData {
     NSString *ns_filepath = [[NSBundle mainBundle] pathForResource:ns_filename ofType:ns_typename];
     
     // UIImageの取得
-//    UIImage *image = [UIImage imageWithContentsOfFile:ns_filepath];
-    id image = [NSBitmapImageRep imageRepWithContentsOfFile:ns_filepath];
+    UIImage *image = [UIImage imageWithContentsOfFile:ns_filepath];
     
     CGImageRef imageRef = [image CGImage];
     pPixelData->pData->width = (int)CGImageGetWidth(imageRef), pPixelData->pData->height = (int)CGImageGetHeight(imageRef);
