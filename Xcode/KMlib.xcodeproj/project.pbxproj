@@ -197,6 +197,25 @@
 			name = bin;
 			sourceTree = "<group>";
 		};
+		9436A1F5182FCECF00B58211 /* gameobjects */ = {
+			isa = PBXGroup;
+			children = (
+				946CF138182F68D2005093CB /* AbstractObject.h */,
+				946CF13E182F68D2005093CB /* Game2DObject.h */,
+				946CF13F182F68D2005093CB /* Game3DObject.h */,
+			);
+			name = gameobjects;
+			sourceTree = "<group>";
+		};
+		9436A1F6182FCEE900B58211 /* gameobjects */ = {
+			isa = PBXGroup;
+			children = (
+				943307B6182748520054C8AF /* Game2DObject.cpp */,
+				943307B7182748520054C8AF /* GameObject.cpp */,
+			);
+			name = gameobjects;
+			sourceTree = "<group>";
+		};
 		9443A12D18278196000B6FAE /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,12 +249,11 @@
 		9489FB791826B5E6009BBB63 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				9436A1F6182FCEE900B58211 /* gameobjects */,
 				9443A12D18278196000B6FAE /* models */,
 				943307B8182748520054C8AF /* objC */,
 				943307B3182748520054C8AF /* Camera.cpp */,
 				943307B5182748520054C8AF /* FBO.cpp */,
-				943307B6182748520054C8AF /* Game2DObject.cpp */,
-				943307B7182748520054C8AF /* GameObject.cpp */,
 				943307B9182748520054C8AF /* PixelData.cpp */,
 				943307BA182748520054C8AF /* Shader.cpp */,
 				943307BB182748520054C8AF /* ShaderManager.cpp */,
@@ -250,15 +268,12 @@
 		9489FB7A1826B5EC009BBB63 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				9436A1F5182FCECF00B58211 /* gameobjects */,
 				946CF178182F68ED005093CB /* models */,
 				946CF136182F68D2005093CB /* _useGL.h */,
-				946CF138182F68D2005093CB /* AbstractObject.h */,
-				946CF139182F68D2005093CB /* Camera.h */,
 				946CF13A182F68D2005093CB /* Color.h */,
 				946CF13B182F68D2005093CB /* Component.h */,
 				946CF13D182F68D2005093CB /* FBO.h */,
-				946CF13E182F68D2005093CB /* Game2DObject.h */,
-				946CF13F182F68D2005093CB /* Game3DObject.h */,
 				946CF140182F68D2005093CB /* GameCore.h */,
 				946CF141182F68D3005093CB /* GameObject.h */,
 				946CF142182F68D3005093CB /* KMMath.h */,
@@ -267,6 +282,7 @@
 				946CF145182F68D3005093CB /* Shader.h */,
 				946CF146182F68D3005093CB /* ShaderManager.h */,
 				946CF148182F68D3005093CB /* Sprite.h */,
+				946CF139182F68D2005093CB /* Camera.h */,
 				946CF149182F68D3005093CB /* TextSrcData.h */,
 				946CF14A182F68D3005093CB /* Texture.h */,
 				946CF14B182F68D3005093CB /* TextureManager.h */,

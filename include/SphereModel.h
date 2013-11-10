@@ -16,6 +16,7 @@
 #define DEFAULT_SEGMENT     (16)
 
 class SphereModel : public AbstractModel {
+    int segments;
 public:
     // コンストラクタ
     SphereModel(int seg) : segments(seg) {
@@ -25,8 +26,6 @@ public:
     
     virtual void Render(const Game3DObject *) override;
     
-private:
-    int segments;
 };
 
 #endif /* defined(__KMLib__SphereModel__) */
