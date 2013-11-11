@@ -25,12 +25,8 @@ public:
     /**
      *  コンストラクタ
      */
-    Game2DObject(GameCore *gamePtr) : GameObject(gamePtr), x(0.0f), y(0.0f), z(0.0f), sclX(1.0f), sclY(1.0f),
+    Game2DObject() : GameObject(), x(0.0f), y(0.0f), z(0.0f), sclX(1.0f), sclY(1.0f),
     rotation(0.0f), color() {}
-    
-    // 描画メソッド
-    // @Override
-    virtual void Draw();
     
     void SetTexture(CTexture *pTexture) {
         SetValue(TEXTURE_PROPERTY, pTexture);

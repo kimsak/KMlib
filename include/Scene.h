@@ -9,13 +9,9 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-class GameCore;
-
 class CScene {
-    GameCore *pGame;
 public:
-    // コンストラクタ
-    CScene(GameCore *gamePtr) : pGame(gamePtr) {}
+    // デストラクタ
     virtual ~CScene() {}
     
     // Virtual functions

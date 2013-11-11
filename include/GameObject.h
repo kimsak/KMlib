@@ -8,17 +8,15 @@
 
 #ifndef GAME_OBJECT_H_
 #define GAME_OBJECT_H_
-#include "GameCore.h"
 #include "AbstractObject.h"
 #include "Component.h"
 #include <list>
+#include <map>
 
 class GameObject;
 typedef std::list<GameObject *> GameObjList;
 
 class GameObject : public AbstractObject {
-    GameCore *pGame;
-    
     // 汎用辞書変数
     std::map<std::string, IComponent *> propertyTable;
     
@@ -33,7 +31,7 @@ public:
     ObjState obj_state;
     
     // コンストラクタ
-    GameObject(GameCore *gamePtr) : AbstractObject(), pGame(gamePtr), obj_state(ACTIVE) {}
+    GameObject() : AbstractObject(), obj_state(ACTIVE) {}
     virtual ~GameObject() {}
     
     // @Override
@@ -46,7 +44,7 @@ public:
     virtual void Term() {}
     
     // @Override
-    virtual GameObject *SetName(std::string name) {
+    virtual GameObject *SetName(const std::string &name) {
         AbstractObject::SetName(name);
         return this;
     }
@@ -71,10 +69,6 @@ public:
     // 子オブジェクトを再帰的に破壊する
     void DestroyChildAll();
     
-    GameCore *Get_pGame() const {
-        return pGame;
-    }
-    
     /**
      *  プロパティの設定
      *  @param name     プロパティの名前（キー）
@@ -86,7 +80,7 @@ public:
     
     // プロパティの取得
     IComponent *GetValue(std::string name) const {
-        std::map<std::string, IComponent *>::const_iterator it = propertyTable.find(name);
+        auto it = propertyTable.find(name);
         return it != propertyTable.end() ? it->second : NULL;
     }
 };
