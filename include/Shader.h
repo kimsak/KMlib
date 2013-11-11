@@ -47,6 +47,7 @@ public:
     void SetUniform(const std::string &name, const Color &color);
     
     static Shader *Create(TextSrcDataRef vertexRef, TextSrcDataRef fragRef);
+    static Shader *Create(const char *vertexSrc, const char *fragmentSrc);
     
     /**
      *  シェーダーのソースをコンパイルするクラス関数

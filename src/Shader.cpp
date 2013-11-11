@@ -84,6 +84,47 @@
     return pShader;
 }
 
+/*static*/Shader *Shader::Create(const char *vertexSrc, const char *fragmentSrc) {
+    GLuint vtxID, frgID;
+    GLint pgLink;
+    
+    // 各ソースのコンパイル
+    // 頂点シェーダー
+    if( !(vtxID = CompileShader(GL_VERTEX_SHADER, "__v__", vertexSrc)) )
+        return nullptr;
+    // フラグメントシェーダー
+    if( !(frgID = CompileShader(GL_FRAGMENT_SHADER, "__f__", fragmentSrc)) ) {
+        glDeleteShader(vtxID);
+        return nullptr;
+    }
+    
+    //
+    // リンク処理
+    Shader *pShader = new Shader;
+    // オブジェクトの関連付け
+    glAttachShader(pShader->programID, vtxID);
+    glAttachShader(pShader->programID, frgID);
+    // リンク処理
+    glLinkProgram(pShader->programID);
+    glGetProgramiv(pShader->programID, GL_LINK_STATUS, &pgLink);
+    if(pgLink == GL_FALSE) {
+        fprintf(stderr, "Link Error!\n");
+        {   // ログ出力
+            int length = 0, logSize = 0;
+            glGetProgramiv(pShader->programID, GL_INFO_LOG_LENGTH, &logSize);
+            if( logSize > 1 ) {
+                char buf[ LOG_BUF_SIZE ];
+                glGetProgramInfoLog(pShader->programID, LOG_BUF_SIZE, &length, buf);
+                fprintf(stderr, "%s\n", buf);
+            }
+        }
+        delete pShader;
+        return nullptr;
+    }
+    
+    return pShader;
+}
+
 /**
  *  コンストラクタ
  */
@@ -110,7 +151,7 @@ void Shader::Bind() const {
  *  シェーダーのアンバインド
  */
 void Shader::Unbind() {
-    if(glIsProgram(programID) == GL_TRUE) glUseProgram(0);
+    glUseProgram(0);
 }
 
 // ==============================

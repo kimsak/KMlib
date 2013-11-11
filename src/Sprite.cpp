@@ -7,10 +7,47 @@
 //
 #include "_useGL.h"
 #include "Sprite.h"
-#include "Math.h"
+#include "Shader.h"
 #include "Texture.h"
-#include "GameCore.h"
-#include "ShaderManager.h"
+
+/**
+ *  シェーダーのソースデータ（頂点シェーダー）
+ */
+static const char vertex_src[] =
+"attribute vec4 position;"
+"attribute vec2 texcoord;"
+
+"varying vec4 colorVarying;"
+"varying vec2 texCoord0;"
+
+"uniform vec4 monoColor;"
+"uniform mat4 modelViewProjectionMatrix;"
+
+"uniform mat4 texMatrix;"
+
+"void main() {"
+"  colorVarying = monoColor;"
+"  gl_Position = modelViewProjectionMatrix * position;"
+"  vec4 texcoordVec4 = vec4(texcoord, 0, 1);"
+"  texcoordVec4 = texMatrix * texcoordVec4;"
+"  texCoord0 = texcoordVec4.xy;"
+"}";
+
+/**
+ *  シェーダーのソースデータ（フラグメントシェーダー）
+ */
+static const char fragment_src[] =
+"varying vec4 colorVarying;"
+"varying vec2 texCoord0;"
+
+"uniform sampler2D sampler;"
+
+"void main() {"
+"  vec2 n_texcoord = texCoord0;"
+"  n_texcoord.y = 1.0 - texCoord0.y;"
+"  if(colorVarying.w > 0.0) gl_FragColor = colorVarying * texture2D(sampler, n_texcoord);"
+"  else discard;"
+"}";
 
 // 頂点データ
 // 左上原点
@@ -42,33 +79,31 @@ static float tex_coords[] = {
 	1, 0
 };
 
+// 専用シェーダー
 /*static*/Shader *CSprite::pShader = nullptr;
 
 /*static*/float CSprite::displayWidth = 1;
 /*static*/float CSprite::displayHeight = 1;
 
-/*static*/void CSprite::Initialize(GameCore *pGame) {
+/*static*/void CSprite::Initialize(int width, int height) {
     /**
      *  ディスプレイの設定
      */
-    displayWidth = (float)pGame->GetDisplayWidth(), displayHeight = (float)pGame->GetDisplayHeight();
+    displayWidth = (float)width, displayHeight = (float)height;
     
     /**
      *  専用シェーダーの作成
      */
-    LoadShader(pGame);
+    if(pShader == nullptr) {
+        // シェーダーの読込
+        pShader = Shader::Create(vertex_src, fragment_src);
+    }
 
 }
 
 /*static*/void CSprite::Fianlize() {
-    
-}
-
-/*static*/void CSprite::LoadShader(GameCore *pGame) {
-    const char *shader_name = "Sprite";
-    pGame->GetShaderMgr()->CreateShader(shader_name, shader_name, shader_name);
-    // シェーダーの取得
-    pShader = pGame->GetShaderMgr()->GetShader(shader_name);
+    // シェーダーの破棄
+    if(pShader) delete pShader;
 }
 
 void CSprite::Draw(CTexture *texture) {

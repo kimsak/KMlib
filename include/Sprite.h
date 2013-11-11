@@ -27,19 +27,15 @@ class CSprite {
 public:
     /**
      *  スプライトクラスの初期化処理
-     *  @param pGame ゲームコアクラスのポインタ
+     *  @param width ディスプレイの幅
+     *  @param height ディスプレイの高さ
      */
-    static void Initialize(GameCore *pGame);
+    static void Initialize(int width, int height);
     
     /**
      *  終了前処理
      */
     static void Fianlize();
-    
-    /**
-     *  シェーダーを読み込む関数
-     */
-    static void LoadShader(GameCore *pGame);
     
     /**
      *  コンストラクタ
