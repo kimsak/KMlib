@@ -280,12 +280,152 @@ public:
     }
 };
 
-// ベクトルクラスに関するマクロ定義
+// 3次元ベクトルクラスに関するマクロ定義
 #define AXIS_X		Vector3(1,0,0)
 #define AXIS_Y		Vector3(0,1,0)
 #define AXIS_Z		Vector3(0,0,1)
 #define VEC_ZERO	Vector3()
 #define VEC_ONE		Vector3(1,1,1)
+
+// 4次元ベクトル
+class Vector4 {
+public:
+    float X, Y, Z, W;
+    
+    // コンストラクタ
+    Vector4() : X(0.0f), Y(0.0f), Z(0.0f), W(1.0f) {}
+    Vector4(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) {}
+    
+    /// 代入（3次元ベクトル）
+    Vector4& operator=(const Vector4& v) {
+        X=v.X, Y=v.Y, Z=v.Z, W=v.W;
+        return *this;
+    }
+    /// 代入（float）
+    Vector4 &operator =(float f) {
+        X = Y = Z = W = f;
+        return *this;
+    }
+    /// 代入（int）
+    Vector4 &operator =(int n) {
+        return *this = (float)n;
+    }
+    
+    // 加算処理（2項）
+    Vector4 operator +(const Vector4& v) const {
+        return Vector4(X+v.X, Y+v.Y, Z+v.Z, W+v.W);
+    }
+    
+    // 減算処理（2項）
+    Vector4 operator -(const Vector4& v) const {
+        return Vector4(X-v.X, Y-v.Y, Z-v.Z, W-v.W);
+    }
+    
+    // 倍数処理
+    Vector4 operator *(float d) const {
+        return Vector4(d*X, d*Y, d*Z, d*W);
+    }
+    friend Vector4 operator *(float d, const Vector4 &v) {
+        return Vector4(d*v.X, d*v.Y, d*v.Z, d*v.W);
+    }
+    
+    // 除算処理
+    Vector4 operator /(float d) const {
+        if(d==0.0) {
+            return *this;
+        }
+        else {
+            return Vector4(this->X/d, this->Y/d, this->Z/d, this->W/d);
+        }
+    }
+    
+    // 単項マイナス
+    Vector4 operator -() const {
+        return (-1)*(*this);
+    }
+    
+    // 代入加算
+    Vector4 &operator +=(const Vector4& v) {
+        this->X += v.X; this->Y += v.Y; this->Z += v.Z, this->W += v.W;
+        return *this;
+    }
+    
+    // 代入減算
+    Vector4 &operator -=(const Vector4& v) {
+        this->X -= v.X; this->Y -= v.Y; this->Z -= v.Z, this->W -= v.W;
+        return *this;
+    }
+    
+    // 代入乗算
+    Vector4 &operator *=(float d) {
+        this->X *= d; this->Y *= d; this->Z *= d, this->W *= d;
+        return *this;
+    }
+    
+    // 代入除算
+    Vector4 &operator /=(float d) {
+        if(d==0.0) return *this;
+        else {
+            this->X /= d; this->Y /= d; this->Z /= d, this->W /= d;
+            return *this;
+        }
+    }
+    
+    // ベクトルの大きさを求める（2乗）
+    float Length2() const {
+        return X*X + Y*Y + Z*Z + W*W;
+    }
+    
+    // ベクトルの大きさを求める
+    float Length() const {
+        return sqrtf(Length2());
+    }
+    
+    // 正規化処理
+    Vector4 &Normalize() {
+        return (*this /= Length());
+    }
+    friend Vector4 Normalize(const Vector4& v) {
+        return v / v.Length();
+    }
+    
+    // 内積
+    float Dot(const Vector4 &v) const {
+        return X*v.X+Y*v.Y+Z*v.Z+W*v.W;
+    }
+    friend float Dot(const Vector4 &a, const Vector4 &b) {
+        return a.Dot(b);
+    }
+    
+    // 外積
+//    Vector3 Cross(const Vector3& v) const {
+//        return Vector3(Y*v.Z-Z*v.Y, Z*v.X-X*v.Z, X*v.Y-Y*v.X);
+//    }
+//    friend Vector3 Cross(const Vector3 &a, const Vector3 &b) {
+//        return a.Cross(b);
+//    }
+    
+    // 線形補間関数
+    Vector4 Lerp(const Vector4 &target, float d) {
+        return (1-d)*(*this) + d*target;
+    }
+    
+    void SetXY(float x, float y) {
+        X = x; Y = y;
+    }
+    
+    void SetXZ(float x, float z) {
+        X = x; Z = z;
+    }
+    
+    void SetYZ(float y, float z) {
+        Y = y; Z = z;
+    }
+    
+    void SetXYZ(float x, float y, float z) {
+        X = x, Y = y, Z = z;
+    }
+};
 
 // クォータニオンクラス
 class CQuaternion {
