@@ -5,8 +5,8 @@
  *      Author: kimurayuusaku
  */
 
-#ifndef MATH_H_
-#define MATH_H_
+#ifndef KMMATH_H_
+#define KMMATH_H_
 
 #include <cmath>
 #include <assert.h>
@@ -812,4 +812,4 @@ public:
     }
 };
 
-#endif /* MATH_H_ */
+#endif /* KMMATH_H_ */
