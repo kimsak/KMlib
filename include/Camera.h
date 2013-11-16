@@ -8,7 +8,7 @@
 
 #ifndef CAMERA_H_
 #define CAMERA_H_
-#include "Math.h"
+#include "KMMath.h"
 #include "_useGL.h"
 #include "Component.h"
 
@@ -27,8 +27,8 @@ public:
     /**
      *  コンストラクタ
      */
-    Camera() : fovy(30.0f), aspect(1.0f), nearClip(1.0f), farClip(100.0f) {}
-    Camera(float _fovy, float _nearClip, float _farClip) : fovy(_fovy), nearClip(_nearClip), farClip(_farClip) {}
+    Camera();
+    Camera(float _fovy, float _nearClip, float _farClip);
     
     Camera *SetFov(float f) {
         if(f > 0) fovy = f;

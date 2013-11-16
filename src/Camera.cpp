@@ -8,6 +8,21 @@
 #include "Game3DObject.h"
 #include "Camera.h"
 
+/**
+ *  コストラクタ（デフォルト）
+ */
+Camera::Camera() : fovy(30.0f), aspect(1.0f), nearClip(1.0f), farClip(100.0f) {
+    SetPerspective(fovy, aspect, nearClip, farClip);
+}
+
+/**
+ *  コストラクタ
+ */
+Camera::Camera(float _fovy, float _nearClip, float _farClip) : fovy(_fovy), nearClip(_nearClip), farClip(_farClip)
+{
+    SetPerspective(fovy, aspect, nearClip, farClip);
+}
+
 void Camera::SetLookAt(const Vector3 &eyePos, const Vector3 &targetPos, const Vector3 &upperDir) {
     _viewMatrix = CMatrix4::LookAt(eyePos, targetPos, upperDir);
 }
