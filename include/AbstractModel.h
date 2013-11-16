@@ -9,15 +9,21 @@
 #ifndef ABSTRACT_MODEL_H_
 #define ABSTRACT_MODEL_H_
 #include "Component.h"
+#include <string>
 
 class Game3DObject;
+class Shader;
 
 class AbstractModel : public IComponent {
 public:
     // デストラクタ
     virtual ~AbstractModel() {}
     
-    virtual void Render(const Game3DObject *) = 0;
+    virtual void Render() = 0;
+    
+    virtual void SetAttrPos(Shader *pShader, const std::string &name) {}
+    virtual void SetAttrNorm(Shader *pShader, const std::string &name) {}
+    virtual void SetAttrTexCoord(Shader *pShader, const std::string &name) {}
 };
 
 #endif  /*defined(ABSTRACT_MODEL_H_)*/

@@ -10,15 +10,13 @@
 #define CUBE_MODEL_H_
 
 #include "AbstractModel.h"
-#include "Math.h"
-#include "Color.h"
-
-// 定数定義
-#define USE_SHADER_NAME ("Basic3D")
 
 class CubeModel : public AbstractModel {
 public:
-    virtual void Render(const Game3DObject *) override;
+    virtual void Render() override;
+    
+    virtual void SetAttrPos(Shader *pShader, const std::string &name) override;
+    virtual void SetAttrNorm(Shader *pShader, const std::string &name) override;
 };
 
 #endif /* defined(__KandataGame__CubeModel__) */

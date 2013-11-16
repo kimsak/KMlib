@@ -10,22 +10,25 @@
 #define __KMLib__SphereModel__
 
 #include "AbstractModel.h"
+#include <memory>
 
 // 定数定義
-#define USE_SHADER_NAME     ("Basic3D")
 #define DEFAULT_SEGMENT     (16)
 
 class SphereModel : public AbstractModel {
     int segments;
+    
+    std::shared_ptr<float>  verts;
+    std::shared_ptr<float>  normals;
+    std::shared_ptr<float>  texCoords;
 public:
     // コンストラクタ
-    SphereModel(int seg) : segments(seg) {
-        if(segments <= 1) segments = DEFAULT_SEGMENT;
-    }
-    SphereModel() : segments(DEFAULT_SEGMENT) {}
+    SphereModel(int seg = DEFAULT_SEGMENT);
     
-    virtual void Render(const Game3DObject *) override;
+    virtual void Render() override;
     
+    virtual void SetAttrPos(Shader *pShader, const std::string &name) override;
+    virtual void SetAttrNorm(Shader *pShader, const std::string &name) override;
 };
 
 #endif /* defined(__KMLib__SphereModel__) */
