@@ -29,6 +29,10 @@ public:
      */
     void Dispose();
     
+    // デストラクタ
+    ~ShaderManager() {
+        Dispose();
+    }
 };
 
 #endif /* defined(SHADER_MANAGER_H_) */

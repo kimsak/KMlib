@@ -25,7 +25,7 @@ public:
     virtual void Draw() = 0;
     virtual void Term() = 0;
     
-    virtual AbstractObject *SetName(std::string name) {
+    virtual AbstractObject *SetName(const std::string &name) {
         this->name = name;
         return this;
     }
