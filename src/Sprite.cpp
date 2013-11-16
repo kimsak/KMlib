@@ -14,40 +14,48 @@
  *  シェーダーのソースデータ（頂点シェーダー）
  */
 static const char vertex_src[] =
-"attribute vec4 position;"
-"attribute vec2 texcoord;"
+"attribute vec4 position;\n"
+"attribute vec2 texcoord;\n"
 
-"varying vec4 colorVarying;"
-"varying vec2 texCoord0;"
+#if defined (IOS_BUILD)
+"varying mediump vec4 colorVarying;\n"
+"varying mediump vec2 texCoord0;\n"
+#else
+"varying vec4 colorVarying;\n"
+"varying vec2 texCoord0;\n"
+#endif
 
-"uniform vec4 monoColor;"
-"uniform mat4 modelViewProjectionMatrix;"
+"uniform vec4 monoColor;\n"
+"uniform mat4 modelViewProjectionMatrix;\n"
 
-"uniform mat4 texMatrix;"
+"uniform mat4 texMatrix;\n"
 
-"void main() {"
-"  colorVarying = monoColor;"
-"  gl_Position = modelViewProjectionMatrix * position;"
-"  vec4 texcoordVec4 = vec4(texcoord, 0, 1);"
-"  texcoordVec4 = texMatrix * texcoordVec4;"
-"  texCoord0 = texcoordVec4.xy;"
-"}";
+"void main() {\n"
+"  colorVarying = monoColor;\n"
+"  gl_Position = modelViewProjectionMatrix * position;\n"
+"  vec4 texcoordVec4 = vec4(texcoord, 0, 1);\n"
+"  texcoordVec4 = texMatrix * texcoordVec4;\n"
+"  texCoord0 = texcoordVec4.xy;\n"
+"}\n";
 
 /**
  *  シェーダーのソースデータ（フラグメントシェーダー）
  */
 static const char fragment_src[] =
-"varying vec4 colorVarying;"
-"varying vec2 texCoord0;"
+#if defined (IOS_BUILD)
+"varying mediump vec4 colorVarying;\n"
+"varying mediump vec2 texCoord0;\n"
+#else
+"varying vec4 colorVarying;\n"
+"varying vec2 texCoord0;\n"
+#endif
 
-"uniform sampler2D sampler;"
+"uniform sampler2D sampler;\n"
 
-"void main() {"
-"  vec2 n_texcoord = texCoord0;"
-"  n_texcoord.y = 1.0 - texCoord0.y;"
-"  if(colorVarying.w > 0.0) gl_FragColor = colorVarying * texture2D(sampler, n_texcoord);"
-"  else discard;"
-"}";
+"void main() {\n"
+"  if(colorVarying.w > 0.0) gl_FragColor = colorVarying * texture2D(sampler, texCoord0);\n"
+"  else discard;\n"
+"}\n";
 
 // 頂点データ
 // 左上原点
