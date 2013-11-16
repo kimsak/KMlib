@@ -22,6 +22,10 @@ public:
     virtual void Draw()         = 0;
     virtual void Finalize()     = 0;
     
+    void SetDisplaySize(int width, int height) {
+        displayWidth = width, displayHeight = height;
+    }
+    
     int GetDisplayWidth() const { return displayWidth; }
     int GetDisplayHeight() const { return displayHeight; }
     float GetDisplayAspect() const { return (float)displayWidth/displayHeight; }
