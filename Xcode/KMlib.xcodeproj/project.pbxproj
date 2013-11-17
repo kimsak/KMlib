@@ -34,6 +34,11 @@
 		9434CC2A182E9CA800D07014 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BD182748520054C8AF /* Sprite.cpp */; };
 		9434CC2B182E9CA800D07014 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BE182748520054C8AF /* Texture.cpp */; };
 		9434CC2C182E9CA800D07014 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943307BF182748520054C8AF /* TextureManager.cpp */; };
+		94486511183861300045D17B /* InputManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 94486510183861300045D17B /* InputManager.h */; };
+		944865121838614C0045D17B /* TouchData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9448650E183860A90045D17B /* TouchData.h */; };
+		944865131838614C0045D17B /* BasicGame.h in Headers */ = {isa = PBXBuildFile; fileRef = 9436A1FB182FD63300B58211 /* BasicGame.h */; };
+		94486514183861570045D17B /* BasicGame.h in Headers */ = {isa = PBXBuildFile; fileRef = 9436A1FB182FD63300B58211 /* BasicGame.h */; };
+		94486518183866D60045D17B /* TouchData_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94486516183866D60045D17B /* TouchData_ios.mm */; };
 		946CF14C182F68D3005093CB /* _useGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 946CF136182F68D2005093CB /* _useGL.h */; };
 		946CF14D182F68D3005093CB /* _useGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 946CF136182F68D2005093CB /* _useGL.h */; };
 		946CF14E182F68D3005093CB /* AbstractModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 946CF137182F68D2005093CB /* AbstractModel.h */; };
@@ -106,6 +111,9 @@
 		9434CBE1182E90EA00D07014 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9434CC1D182E9C8000D07014 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9436A1FB182FD63300B58211 /* BasicGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicGame.h; sourceTree = "<group>"; };
+		9448650E183860A90045D17B /* TouchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchData.h; sourceTree = "<group>"; };
+		94486510183861300045D17B /* InputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputManager.h; sourceTree = "<group>"; };
+		94486516183866D60045D17B /* TouchData_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchData_ios.mm; sourceTree = "<group>"; };
 		946CF136182F68D2005093CB /* _useGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _useGL.h; sourceTree = "<group>"; };
 		946CF137182F68D2005093CB /* AbstractModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractModel.h; sourceTree = "<group>"; };
 		946CF138182F68D2005093CB /* AbstractObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractObject.h; sourceTree = "<group>"; };
@@ -220,6 +228,23 @@
 			name = models;
 			sourceTree = "<group>";
 		};
+		9448650D1838604F0045D17B /* input */ = {
+			isa = PBXGroup;
+			children = (
+				9448650E183860A90045D17B /* TouchData.h */,
+				94486510183861300045D17B /* InputManager.h */,
+			);
+			path = input;
+			sourceTree = "<group>";
+		};
+		94486515183865F10045D17B /* input */ = {
+			isa = PBXGroup;
+			children = (
+				94486516183866D60045D17B /* TouchData_ios.mm */,
+			);
+			path = input;
+			sourceTree = "<group>";
+		};
 		946CF178182F68ED005093CB /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +269,7 @@
 		9489FB791826B5E6009BBB63 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				94486515183865F10045D17B /* input */,
 				9436A1F6182FCEE900B58211 /* gameobjects */,
 				9443A12D18278196000B6FAE /* models */,
 				943307B8182748520054C8AF /* objC */,
@@ -263,6 +289,7 @@
 		9489FB7A1826B5EC009BBB63 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				9448650D1838604F0045D17B /* input */,
 				9436A1F5182FCECF00B58211 /* gameobjects */,
 				946CF178182F68ED005093CB /* models */,
 				946CF142182F68D3005093CB /* KMMath.h */,
@@ -292,6 +319,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				944865121838614C0045D17B /* TouchData.h in Headers */,
+				944865131838614C0045D17B /* BasicGame.h in Headers */,
 				946CF15F182F68D3005093CB /* Game3DObject.h in Headers */,
 				946CF16F182F68D3005093CB /* SphereModel.h in Headers */,
 				946CF167182F68D3005093CB /* PixelData.h in Headers */,
@@ -301,6 +330,7 @@
 				946CF157182F68D3005093CB /* Component.h in Headers */,
 				946CF15D182F68D3005093CB /* Game2DObject.h in Headers */,
 				946CF16B182F68D3005093CB /* Shader.h in Headers */,
+				94486511183861300045D17B /* InputManager.h in Headers */,
 				946CF171182F68D3005093CB /* Sprite.h in Headers */,
 				946CF163182F68D3005093CB /* GameObject.h in Headers */,
 				946CF14F182F68D3005093CB /* AbstractModel.h in Headers */,
@@ -320,6 +350,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94486514183861570045D17B /* BasicGame.h in Headers */,
 				946CF15E182F68D3005093CB /* Game3DObject.h in Headers */,
 				946CF16E182F68D3005093CB /* SphereModel.h in Headers */,
 				946CF166182F68D3005093CB /* PixelData.h in Headers */,
@@ -424,6 +455,7 @@
 				9434CC28182E9CA800D07014 /* Shader.cpp in Sources */,
 				9434CC29182E9CA800D07014 /* ShaderManager.cpp in Sources */,
 				9434CC2A182E9CA800D07014 /* Sprite.cpp in Sources */,
+				94486518183866D60045D17B /* TouchData_ios.mm in Sources */,
 				9434CC2B182E9CA800D07014 /* Texture.cpp in Sources */,
 				9434CC2C182E9CA800D07014 /* TextureManager.cpp in Sources */,
 			);
