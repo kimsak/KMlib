@@ -13,8 +13,8 @@
  *  iOS用のImageDataクラスの定義
  */
 #ifdef __APPLE__
-#include <Foundation/NSString.h>
-#include <Foundation/NSBundle.h>
+#import <Foundation/NSString.h>
+#import <Foundation/NSBundle.h>
 
 /*static*/
 TextSrcDataRef TextSrcData::LoadContentFromFile(const char *filename, const char *extension_name) {
