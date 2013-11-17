@@ -129,6 +129,10 @@ void CSprite::Draw(CTexture *texture) {
  */
 void CSprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
 	if(!texture || !pShader) return;
+    
+    // 現在のシェーダープログラムの保存
+    int currprogram = 0;
+    glGetIntegerv(GL_CURRENT_PROGRAM, &currprogram);
 	
 	/**
 	 *	シェーダーの設定
@@ -196,9 +200,9 @@ void CSprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
     pShader->DisableAttribArray("position");
 	
 	/**
-	 *	シェーダーの解除
+	 *	シェーダーの解除（もとに戻す）
 	 */
-	pShader->Unbind();
+	glUseProgram(currprogram);
 }
 
 /**
@@ -208,6 +212,10 @@ void CSprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
 void CSprite::DrawRect(CTexture *texture, const CRectangle &srcRect, const CRectangle &destRect) {
 	if(!texture || !pShader) return;
 	
+    // 現在のシェーダープログラムの保存
+    int currprogram = 0;
+    glGetIntegerv(GL_CURRENT_PROGRAM, &currprogram);
+    
 	/**
 	 *	シェーダーの設定
 	 */
@@ -268,7 +276,7 @@ void CSprite::DrawRect(CTexture *texture, const CRectangle &srcRect, const CRect
 
     
 	/**
-	 *	シェーダーの解除
+	 *	シェーダーの解除（もとに戻す）
 	 */
-	pShader->Unbind();
+	glUseProgram(currprogram);
 }
