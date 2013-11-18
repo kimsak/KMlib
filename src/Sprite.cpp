@@ -88,12 +88,12 @@ static float tex_coords[] = {
 };
 
 // 専用シェーダー
-/*static*/Shader *CSprite::pShader = nullptr;
+/*static*/Shader *Sprite::pShader = nullptr;
 
-/*static*/float CSprite::displayWidth = 1;
-/*static*/float CSprite::displayHeight = 1;
+/*static*/float Sprite::displayWidth = 1;
+/*static*/float Sprite::displayHeight = 1;
 
-/*static*/void CSprite::Initialize(int width, int height) {
+/*static*/void Sprite::Initialize(int width, int height) {
     /**
      *  ディスプレイの設定
      */
@@ -109,12 +109,12 @@ static float tex_coords[] = {
 
 }
 
-/*static*/void CSprite::Fianlize() {
+/*static*/void Sprite::Fianlize() {
     // シェーダーの破棄
     if(pShader) delete pShader;
 }
 
-void CSprite::Draw(CTexture *texture) {
+void Sprite::Draw(CTexture *texture) {
 	if(texture==NULL) return;
 //	DrawRotScl(texture, x, y, 1, 1, 0, device);
 	CRectangle src, dest;
@@ -127,7 +127,7 @@ void CSprite::Draw(CTexture *texture) {
  *	回転、伸縮の指定をしてテクスチャを描画する関数
  *	描画するテクスチャの座標は中心が基準
  */
-void CSprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
+void Sprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
 	if(!texture || !pShader) return;
     
     // 現在のシェーダープログラムの保存
@@ -209,7 +209,7 @@ void CSprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
  *	矩形オブジェクトを使って描画領域とテクスチャの描画範囲を指定し描画する関数
  *	矩形の座標は左上が基準
  */
-void CSprite::DrawRect(CTexture *texture, const CRectangle &srcRect, const CRectangle &destRect) {
+void Sprite::DrawRect(CTexture *texture, const CRectangle &srcRect, const CRectangle &destRect) {
 	if(!texture || !pShader) return;
 	
     // 現在のシェーダープログラムの保存

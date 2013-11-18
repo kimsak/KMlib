@@ -15,7 +15,7 @@ class CTexture;
 class GameCore;
 class Shader;
 
-class CSprite {
+class Sprite {
     static Shader *pShader;
     static float displayWidth, displayHeight;
     
@@ -40,7 +40,7 @@ public:
     /**
      *  コンストラクタ
      */
-    CSprite(float _x, float _y, const Color &_color) : x(_x), y(_y), color(_color), srcRect() {}
+    Sprite(float _x, float _y, const Color &_color) : x(_x), y(_y), color(_color), srcRect() {}
     
     void SetSrcRect(float _x, float _y, float _w, float _h) {
         srcRect.SetBounds(_x, _y, _w, _h);
