@@ -66,7 +66,7 @@ rboID(0)
 //    glReadBuffer(GL_NONE);
     
     Unbind();
-    tex->Unbind();
+    if(tex) tex->Unbind();
 }
 
 /**
