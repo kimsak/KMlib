@@ -36,7 +36,7 @@ public:
         return (float)originalW/originalH;
     }
     
-    void Bind();
+    void Bind(int unit = -1);
     void Unbind();
 };
 

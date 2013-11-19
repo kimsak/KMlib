@@ -22,7 +22,10 @@ CTexture::~CTexture() {
     glDeleteTextures(1, &textureID);
 }
 
-void CTexture::Bind() {
+void CTexture::Bind(int unit) {
+    // テクスチャユニットの設定
+    if(0 <= unit && unit < 32) glActiveTexture( (GL_TEXTURE0) + unit );
+    
     glBindTexture(GL_TEXTURE_2D, textureID);
 }
 
