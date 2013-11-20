@@ -7,8 +7,8 @@
 //
 #include "_useGL.h"
 #include "Sprite.h"
-#include "Shader.h"
 #include "Texture.h"
+#include "Shader.h"
 
 /**
  *  シェーダーのソースデータ（頂点シェーダー）
@@ -18,10 +18,10 @@ static const char vertex_src[] =
 "attribute vec2 texcoord;\n"
 
 #if defined (IOS_BUILD)
-"varying mediump vec4 colorVarying;\n"
+"varying mediump vec4 outColor;\n"
 "varying mediump vec2 texCoord0;\n"
 #else
-"varying vec4 colorVarying;\n"
+"varying vec4 outColor;\n"
 "varying vec2 texCoord0;\n"
 #endif
 
@@ -31,7 +31,7 @@ static const char vertex_src[] =
 "uniform mat4 texMatrix;\n"
 
 "void main() {\n"
-"  colorVarying = monoColor;\n"
+"  outColor = monoColor;\n"
 "  gl_Position = modelViewProjectionMatrix * position;\n"
 "  vec4 texcoordVec4 = vec4(texcoord, 0, 1);\n"
 "  texcoordVec4 = texMatrix * texcoordVec4;\n"
@@ -43,27 +43,23 @@ static const char vertex_src[] =
  */
 static const char fragment_src[] =
 #if defined (IOS_BUILD)
-"varying mediump vec4 colorVarying;\n"
+"varying mediump vec4 outColor;\n"
 "varying mediump vec2 texCoord0;\n"
 #else
-"varying vec4 colorVarying;\n"
+"varying vec4 outColor;\n"
 "varying vec2 texCoord0;\n"
 #endif
 
 "uniform sampler2D sampler;\n"
 
 "void main() {\n"
-"  if(colorVarying.w > 0.0) gl_FragColor = colorVarying * texture2D(sampler, texCoord0);\n"
+"  if(outColor.w > 0.0) gl_FragColor = outColor * texture2D(sampler, texCoord0);\n"
 "  else discard;\n"
 "}\n";
 
 // 頂点データ
 // 左上原点
 static float points[] = {
-//	-1, -1, 0,
-//	1, -1, 0,
-//	-1, 1, 0,
-//	1, 1, 0
 	0, -1, 0,
 	1, -1, 0,
 	0, 0, 0,
@@ -111,16 +107,7 @@ static float tex_coords[] = {
 
 /*static*/void Sprite::Fianlize() {
     // シェーダーの破棄
-    if(pShader) delete pShader;
-}
-
-void Sprite::Draw(CTexture *texture) {
-	if(texture==NULL) return;
-//	DrawRotScl(texture, x, y, 1, 1, 0, device);
-	CRectangle src, dest;
-	src.SetSize(texture->GetWidth(), texture->GetHeight());
-	dest.SetBounds(x, y, src.GetWidth(), src.GetHeight());
-	DrawRect(texture, src, dest);
+    if(pShader) delete pShader, pShader = nullptr;
 }
 
 /**
@@ -158,8 +145,7 @@ void Sprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
     pShader->SetUniform("sampler", 0);
 	
 	// テクスチャの設定
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture->GetID());
+	texture->Bind(0);
 	
 	// modelViewProjectionMatrix
 	// 行列変換
@@ -191,7 +177,7 @@ void Sprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	// テクスチャの解除
-	glBindTexture(GL_TEXTURE_2D, 0);
+	texture->Unbind();
 	
 	/**
 	 *	頂点座標の対応付けを解除する。
@@ -205,78 +191,3 @@ void Sprite::DrawRotScl(CTexture *texture, float sclX, float sclY, float rad) {
 	glUseProgram(currprogram);
 }
 
-/**
- *	矩形オブジェクトを使って描画領域とテクスチャの描画範囲を指定し描画する関数
- *	矩形の座標は左上が基準
- */
-void Sprite::DrawRect(CTexture *texture, const CRectangle &srcRect, const CRectangle &destRect) {
-	if(!texture || !pShader) return;
-	
-    // 現在のシェーダープログラムの保存
-    int currprogram = 0;
-    glGetIntegerv(GL_CURRENT_PROGRAM, &currprogram);
-    
-	/**
-	 *	シェーダーの設定
-	 */
-	pShader->Bind();
-	
-	/**
-	 *	Atrribute変数の設定
-	 */
-    // position
-    pShader->SetAttribf("position", 3, GL_FALSE, 3, points);
-	// texcoord
-    pShader->SetAttribf("texcoord", 2, GL_FALSE, 2, tex_coords);
-	
-	/**
-	 *	Uniform変数の設定
-	 */
-	// monoColor
-	//	float color[] = {1,1,1,1};
-	pShader->SetUniform("monoColor", color);
-	
-	// sampler
-    pShader->SetUniform("sampler", 0);
-	
-	// テクスチャの設定
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture->GetID());
-	
-	// modelViewProjectionMatrix
-	// 行列変換
-//	CMatrix4 mvpMat = CMatrix4::Translation(CVector(1, -1, 0));
-	CMatrix4 mvpMat;
-	mvpMat *= CMatrix4::Scale(Vector3(destRect.GetWidth()/2.0f, destRect.GetHeight()/2.0f, 1));
-//	mvpMat *= CMatrix4::Rotation(CQuaternion(rad/(2*GL_PI), CVector(0, 0, 1)));
-	mvpMat *= CMatrix4::Translation(Vector3(-displayWidth/2.0f+destRect.GetX(), displayHeight/2.0f-destRect.GetY(), 0));
-	mvpMat *= CMatrix4::LookAt(Vector3(0, 0, 10), Vector3(), Vector3(0, 1, 0));
-	mvpMat *= CMatrix4::Orthof(-displayWidth/2.0f, displayWidth/2.0f, displayHeight/2.0f, -displayHeight/2.0f, 1, 100);
-	
-    pShader->SetUniform("modelViewProjectionMatrix", mvpMat);
-	
-	// texMatrix
-	CMatrix4 tmMat = CMatrix4::Scale(Vector3(srcRect.GetWidth()/texture->GetWidth(), srcRect.GetHeight()/texture->GetHeight(), 1));
-	tmMat *= CMatrix4::Translation(Vector3(srcRect.GetX()/texture->GetWidth(), srcRect.GetHeight()/texture->GetHeight(), 0));
-    pShader->SetUniform("texMatrix", tmMat);
-	
-	/**
-	 *	描画
-	 */
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	
-	// テクスチャの解除
-	glBindTexture(GL_TEXTURE_2D, 0);
-	
-    /**
-	 *	頂点座標の対応付けを解除する。
-	 */
-    pShader->DisableAttribArray("texcoord");
-    pShader->DisableAttribArray("position");
-
-    
-	/**
-	 *	シェーダーの解除（もとに戻す）
-	 */
-	glUseProgram(currprogram);
-}
