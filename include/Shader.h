@@ -59,4 +59,6 @@ public:
     static GLuint CompileShader(GLenum shader_type, const char *filename, const char *srcData);
 };
 
+typedef std::shared_ptr<Shader> ShaderRef;
+
 #endif /* defined(__KandataGame__Shader__) */
