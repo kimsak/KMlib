@@ -12,7 +12,6 @@
 #include "KMMath.h"
 
 class CTexture;
-class GameCore;
 class Shader;
 
 class Sprite {
@@ -53,11 +52,8 @@ public:
      *  @param sclX 描画するスプライトの伸縮倍率(x方向)
      *  @param sclY 描画するスプライトの伸縮倍率(y方向)
      */
-    
 	void DrawRotScl(CTexture *texture, float sclX, float sclY, float rad);
     
-	void Draw(CTexture *texture);
-	void DrawRect(CTexture *texture, const CRectangle& srcRect, const CRectangle& destRect);
 };
 
 #endif // SPRITE_H_
