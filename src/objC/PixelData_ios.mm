@@ -30,7 +30,7 @@ struct ImageData {
     // UIImageの取得
     UIImage *image = [UIImage imageWithContentsOfFile:ns_filepath];
     
-    CGImageRef imageRef = [image CGImage];
+    CGImageRef imageRef = image.CGImage;
     pPixelData->pData->width = (int)CGImageGetWidth(imageRef), pPixelData->pData->height = (int)CGImageGetHeight(imageRef);
     
     // ピクセルデータの取得
