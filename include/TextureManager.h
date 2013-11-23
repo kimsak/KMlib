@@ -11,28 +11,27 @@
 
 #include <map>
 #include <string>
+#include <memory>
 #include "_useGL.h"
 #include "Texture.h"
 
 class TextureManager {
-    std::map<std::string, CTexture *> texture_map;
-    
-    bool LoadTexture(const unsigned char *pPixels, int width, int height, CTexture *pTexture);
+    std::map<std::string, TextureRef> texture_map;
 public:
     /**
      *  テクスチャを作成し、マップに登録する。
      */
-    bool CreateTexture(std::string name, std::string filename, std::string type_name);
+    bool CreateAndRegisterTexture(const std::string &name, const std::string &filename, const std::string &type_name);
     
     /**
      *  テクスチャオブジェクトの参照を取得する。
      */
-    CTexture *GetTexture(std::string name) const;
+    CTexture *GetTexture(const std::string &name) const;
     
     /**
      *  全テクスチャの破棄
      */
-    void Dispose();
+    void DisposeAllTextures();
 };
 
 #endif /* defined(TEXTURE_MANAGER_H_) */

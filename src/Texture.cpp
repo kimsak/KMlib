@@ -37,7 +37,7 @@ void CTexture::Unbind() {
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-/*static*/CTexture *CTexture::Create(const std::string &filename, const std::string &ext) {
+/*static*/TextureRef CTexture::Create(const std::string &filename, const std::string &ext) {
     /**
      *  PixelDataの生成
      */
@@ -70,5 +70,5 @@ void CTexture::Unbind() {
     pTexture->SetOriginalSize(pixels.GetWidth(), pixels.GetHeight());
     
     if(pNewPixelArr) delete [] pNewPixelArr;    // リサイズされたピクセルデータ配列の破棄
-    return pTexture;
+    return TextureRef(pTexture);
 }

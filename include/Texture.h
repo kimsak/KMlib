@@ -10,6 +10,10 @@
 #define KMLIB_TEXTURE_H_
 #include "Component.h"
 #include <string>
+#include <memory>
+
+class CTexture;
+typedef std::shared_ptr<CTexture> TextureRef;
 
 class CTexture : public IComponent {
     unsigned int textureID;
@@ -40,7 +44,7 @@ public:
     void Bind(int unit = -1);
     void Unbind();
     
-    static CTexture *Create(const std::string &filename, const std::string &ext);
+    static TextureRef Create(const std::string &filename, const std::string &ext);
 };
 
 
