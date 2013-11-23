@@ -6,9 +6,10 @@
 //  Copyright (c) 2013年 木村 裕作. All rights reserved.
 //
 
-#ifndef TEXTURE_H_
-#define TEXTURE_H_
+#ifndef KMLIB_TEXTURE_H_
+#define KMLIB_TEXTURE_H_
 #include "Component.h"
+#include <string>
 
 class CTexture : public IComponent {
     unsigned int textureID;
@@ -38,6 +39,8 @@ public:
     
     void Bind(int unit = -1);
     void Unbind();
+    
+    static CTexture *Create(const std::string &filename, const std::string &ext);
 };
 
 
